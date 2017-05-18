@@ -72,25 +72,24 @@
 
 // Estilo para os campos de formulários
 // Para plugin Wordpress: Contact Form 7
-.form-formation{ 
+@mixin form-formation($image){ 
     margin-top: 15px;
 
     p{
        @include nomargin-nopadding;
         margin-bottom: 5px;
 
-        &:not(:last-of-type){
-            color: $color-default;
+        &:not(:last-of-type){            
             width: 100%;
             height: auto;
         }
 
         &.pergunta{
-          color: $white;          
+            
         }
 
         &.checkbox{
-          color: $white;
+          
           span.wpcf7-form-control-wrap{
 
             position: relative;
@@ -118,7 +117,6 @@
                   content: "";
                   display: inline-block;
                   background-color: transparent;
-                  border: 2px solid $white;
                   border-radius: 3px;
                   width: 17px;
                   height: 16px;
@@ -128,9 +126,7 @@
 
                 &:checked{
                   & ~ span.wpcf7-list-item-label::before{
-                    @include background("footer/checked.jpg", center center, auto, no-repeat);
-                    background-color: $light-blue;
-                    border-color: $light-blue;
+                    @include background($image, center center, auto, no-repeat);                    
                   }
                 }
 
@@ -156,7 +152,7 @@
                 margin-left: 10px;
                 bottom: 7.5px;
                 content: '';
-                @include background("footer/icon-form.png",$w*$n 0px,inheret,no-repeat);
+                @include background($image,$w*$n 0px,inheret,no-repeat);
             }
 
             &.your-name::before{
@@ -197,8 +193,7 @@
                 height: 35px;
                 width: 100%;
                 padding: 10px 10px 10px 50px;
-                border: 0px;
-                border-bottom: 1px solid fadeout($light-blue,90%);
+                border: 0px;                
                 border-radius: 3px;
 
                 &.wpcf7-textarea{
@@ -216,15 +211,13 @@
         }
 
         input[type='submit']{
-            @include bgcolor($light-blue,$white);
             @include pull-right;
             margin-top: 10px;
             padding: 15px;
             line-height: 14px;
             border: 0px;
             border-radius: 5px;
-            text-transform: uppercase;
-            font-weight: $heavy;
+            text-transform: uppercase;            
         }
 
     }
@@ -236,7 +229,6 @@
         margin-top: -15px;
         border: 0px;
         width: 60%;
-        color: $white; 
     }
 
 }

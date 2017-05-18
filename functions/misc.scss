@@ -22,6 +22,27 @@
     background-repeat: no-repeat;
 }
 
+//Botao Qtd
+@mixin gradient-border($color-top, $color-bottom){
+    border-bottom: 1px solid $color-bottom;
+    background: -webkit-linear-gradient(left top, $color-top, $color-bottom), 
+                -webkit-linear-gradient(right top, $color-top, $color-bottom);
+    background:
+        -moz-linear-gradient(left top, $color-top, $color-bottom), 
+        -moz-linear-gradient(right top, $color-top, $color-bottom);                        
+    background:
+        -o-linear-gradient(left top, $color-top, $color-bottom), 
+        -o-linear-gradient(right top, $color-top, $color-bottom); 
+    background: 
+        linear-gradient(left top, $color-top, $color-bottom), 
+        linear-gradient(right top, $color-top, $color-bottom); 
+
+    -moz-background-size: 1px 100%;                    
+    background-size: 1px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
 //Sem padding e margin
 @mixin nomargin-nopadding{
     margin: 0px;
@@ -30,7 +51,7 @@
 
 //Centralizar elementos
 @mixin center-block{
-    display: inline-block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
 }

@@ -139,7 +139,8 @@
     border-radius: 0px;
     
     &:hover{
-        @include bgcolor($color, $bg-color);
+        background-color: lighten($bg-color, 15%);
+        transition: ease-in 0.2s;
     }
 }
 

@@ -15,27 +15,6 @@
     border-bottom: 2px solid darken($laranja, 10%);
 }
 
-//Botao Qtd
-.gradient-border{
-    border-bottom: 1px solid #ddd;
-    background: -webkit-linear-gradient(left top, #fff, #ddd), 
-                -webkit-linear-gradient(right top, #fff, #ddd);
-    background:
-        -moz-linear-gradient(left top, #fff, #ddd), 
-        -moz-linear-gradient(right top, #fff, #ddd);                        
-    background:
-        -o-linear-gradient(left top, #fff, #ddd), 
-        -o-linear-gradient(right top, #fff, #ddd); 
-    background: 
-        linear-gradient(left top, #fff, #ddd), 
-        linear-gradient(right top, #fff, #ddd); 
-
-    -moz-background-size: 1px 100%;                    
-    background-size: 1px 100%;
-    background-position: 0 0, 100% 0;
-    background-repeat: no-repeat;
-}
-
 .nomargin-nopadding{
    @include nomargin-nopadding;
 }
