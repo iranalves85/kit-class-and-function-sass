@@ -1,5 +1,5 @@
 //flutuar
-@mixin flutuar{
+.flutuar{
     position: fixed;
     z-index: 99999;
     width: 100% !important;
@@ -10,14 +10,13 @@
 
 //Botão
 .botao{
-    @include bgcolor($laranja, $branco);
+    @include btn-quadrado($laranja, $branco);
     border: 0px;
     border-bottom: 2px solid darken($laranja, 10%);
 }
 
 //Botao Qtd
-.btn-qtd, .qtd, 
-.qtd-aumentar, .qtd-diminuir{
+.gradient-border{
     border-bottom: 1px solid #ddd;
     background: -webkit-linear-gradient(left top, #fff, #ddd), 
                 -webkit-linear-gradient(right top, #fff, #ddd);
@@ -37,67 +36,38 @@
     background-repeat: no-repeat;
 }
 
-//Sem padding e margin
-@mixin nomargin-nopadding{
-    margin: 0px;
-    padding: 0px;
-}
-
 .nomargin-nopadding{
-   @extend nomargin-nopadding !optional;
+   @include nomargin-nopadding;
 }
 
-//Lista inline
 .list-inline{
-  @extend nomargin-nopadding !optional;
+  @include nomargin-nopadding;
   li{
     display: inline;
     list-style: none;
   }
 }
 
-//Imagem responsiva
 .img-responsive{
-  @extend .img-responsive !optional;
-} 
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}  
 
-//Titulo
-.titulo-secao{
-    
-    text-align: center;
-    text-transform: uppercase; 
-    font-size: $h2;
-    color: $texto-cinza;    
-    
-    span{
-       display: inline-block;
-       font-weight: 700;   
-       border-bottom: 1px solid $texto-cinza;
-       font-weight: 700;
-       padding-bottom: 5px;
-       strong{
-           color: $preto-claro;
-           font-weight: 700;
-       }
-    }
-    
+.alignleft{
+    float: left;
+    margin: 0.5em 1em 0.5em 0;
+    clear: both;
 }
 
-//Placeholder
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: $texto-cinza;
+.alignright{
+    float: right;
+    margin: 0.5em 0 0.5em 1em;
+    clear: both;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: $texto-cinza;
-   opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: $texto-cinza;
-   opacity:  1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: $texto-cinza;
-}
-::-ms-input-placeholder { /* Microsoft Edge */
-   color: $texto-cinza;
+
+.aligncenter{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

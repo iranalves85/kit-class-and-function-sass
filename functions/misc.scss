@@ -1,0 +1,42 @@
+//Funções Misc
+
+// Função para definir bg e cor da fonte
+// dos blocos numerados
+@mixin fn-bg-topic($bg, $font-color){
+
+    @include bgcolor($bg, $font-color);
+
+    & > .topic.bg-white h3{
+        color: $bg;
+    }
+}
+
+// Função que define estilo para icones nos tópicos
+@mixin fn-icone($bg-image, $bg-position, $float, $margin, $w, $h){
+    @include background($bg-image, $bg-position, cover, inherit);
+    width: $w;
+    height: $h;
+    float: $float;
+    margin: $margin;
+    content: "";
+    background-repeat: no-repeat;
+}
+
+//Sem padding e margin
+@mixin nomargin-nopadding{
+    margin: 0px;
+    padding: 0px;
+}
+
+//Centralizar elementos
+@mixin center-block{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+//ELemento para a direita
+@mixin pull-right{
+    float: right;
+    display: inline-block;
+}

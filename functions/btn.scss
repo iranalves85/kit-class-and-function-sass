@@ -1,0 +1,145 @@
+/* 
+    Created on : 17/05/2017, 22:02:14
+    Author     : Iran
+*/
+
+//Botão quadrado
+@mixin btn-square-figure($padding, $float, $position, $sprite-set){
+
+    @media screen and (max-width: $md){
+        float: none;
+        display: block;
+        margin-left: 0px;
+    }
+
+    padding: $padding;
+    float: $float;
+    white-space: normal;
+    word-break: break-word;
+
+    &::before{
+        content:"";
+        display: block;
+        position: absolute;
+        margin: 3px -25px auto;
+        width: 15px;
+        height: 30px;
+        @include bg-sprite($sprite-set, $position, $sprite-set, no-repeat );
+    }
+
+    &:hover{            
+        text-decoration: none !important;
+    }
+}
+
+// Função de definição dos botões da página
+// com funcionalidade hover
+@mixin btn-1($bg-color, $font-color){
+
+  @include bgcolor($bg-color, $font-color);
+  border-radius: 4px;
+  border-color: $bg-color;
+  padding: 7px 15px;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  
+  &::after{
+      content: "\3009";
+      position: absolute;
+      display: none;
+  }
+
+  &:hover {
+      background-color: lighten($bg-color, 5%);
+      transition: all 0.2s;
+      padding-right: 25px;
+
+      &::after{
+        margin-top: 10px;
+        display: inherit;
+        opacity: 1;
+        line-height: 16px;
+        -webkit-animation: btn 0.15s; /* Chrome, Safari, Opera */
+        animation: btn 0.15s;
+        animation-fill-mode: forwards;
+      }
+  }
+}
+
+// Função de definição dos botões da página
+// com funcionalidade hover
+@mixin btn-2($bg-color, $font-color){
+
+  @include bgcolor($bg-color, $font-color);
+  border-radius: 4px;
+  border-color: $bg-color;
+  padding: 7px 15px;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  
+  &::after{
+      content: "\3009";
+      position: absolute;
+      display: none;
+  }
+
+  &:hover {
+      background-color: lighten($bg-color, 5%);
+      transition: all 0.2s;
+      padding-right: 25px;
+
+      &::after{
+        margin-top: 10px;
+        display: inherit;
+        opacity: 1;
+        line-height: 16px;
+        -webkit-animation: btn 0.15s; /* Chrome, Safari, Opera */
+        animation: btn 0.15s;
+        animation-fill-mode: forwards;
+      }
+  }
+}
+
+@mixin btn{ //botão
+    display: inline;
+    margin-top: 25px;
+    padding: 5px 15px;
+    text-decoration: none;
+
+    &:hover{
+        transition: ease-in 0.1s;   
+    }
+    
+    &.btn-section{
+        @include btn-section;
+    }
+            
+}
+
+@mixin btn-section{
+    text-transform: uppercase;
+    border: 0px;
+    margin-bottom: 15px;
+
+    &::after{
+        content: " \25B6";
+    } 
+} 
+
+@mixin btn-quadrado($bg-color, $color){
+    
+    @include bgcolor($bg-color, $color);
+    border: 1px solid $color; 
+    border-radius: 0px;
+    
+    &:hover{
+        @include bgcolor($color, $bg-color);
+    }
+}
+

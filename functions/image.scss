@@ -1,0 +1,16 @@
+/* 
+    Created on : 17/05/2017, 22:27:37
+    Author     : Iran
+*/
+
+//Imagens grandes
+@mixin img-100($screen){
+    @media screen and ( max-width: $screen ){
+        width: 100%;
+        height: auto;
+        max-width: 100%; 
+        margin: auto auto 20px;
+    }
+}
+
+

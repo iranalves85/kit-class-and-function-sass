@@ -1,28 +1,28 @@
 /* Funções */
 
-/* @image: imagem de background
-*  @w: largura da imagem
-*  @h: altura da imagem
-*  @reducao: variavel para redução*/
-.navicon(@image, @w, @h,  @reducao){ //Nav-icon
+/* $image: imagem de background
+*  $w: largura da imagem
+*  $h: altura da imagem
+*  $reducao: variavel para redução*/
+@mixin navicon($image, $w, $h,  $reducao){ //Nav-icon
     
     //reducao
-    @width:  @w / @reducao;
-    @height: @h / @reducao;
+    $width:  $w / $reducao;
+    $height: $h / $reducao;
     
     //posicionamento
-    @pequeno: @width / 3;
-    @grande:  @height;
+    $pequeno: $width / 3;
+    $grande:  $height;
 
     //atributos
     position: relative;    
     
     &::before{
         content: "";
-        width: @pequeno;
-        height: @height;
-        .center-block;
-        .background(@image, 0px 0px, cover , no-repeat);
+        width: $pequeno;
+        height: $height;
+        @include center-block;
+        @include background($image, 0px 0px, cover , no-repeat);
     }
     
     &:hover{
@@ -34,89 +34,63 @@
     //1:integracao 2:conteúdo 3:mobile-marketing
     &.bg-img-2{
         &::before{
-            background-position: -@pequeno 0px;            
+            background-position: -$pequeno 0px;            
         }        
     }
     
     &.bg-img-3{
         &::before{
-            background-position: -@pequeno*2 0px;            
+            background-position: -$pequeno*2 0px;            
         }        
     }
     
 }
 
-.bloco(@bgcolor,@color,@margin,@padding){ // Estilo os blocos
+//Bloco de Seções
+@mixin  bloco($bgcolor,$color,$margin, $padding){ // Estilo os blocos
 
-    .bgcolor(@bgcolor,@color);
-    padding-top: @padding;
-    padding-bottom: @padding;
-    margin-top: @margin;
-    margin-bottom: @margin;
+    @include bgcolor($bgcolor, $color);
+    padding-top: $padding;
+    padding-bottom: $padding;
+    margin-top: $margin;
+    margin-bottom: $margin;
+}
 
-    h2{
-        font-size: @font-size-h2;
-        font-weight: @light;
+//Função do Link Position
+@mixin  link_position($float, $color, $image){ 
+        
+    @include background($image,left top 5px, 20px 19px, no-repeat);
+    float: $float;
+    position: relative;
+    display: inline-block;
+    color: $color;
+    
+    &:hover{
+        text-decoration: underline;
     }
 }
 
-.link_position(@float){ //Função do link
-    a.link-continue{
-        float: @float;
-        position: relative;
-        display: inline-block;
-        width: 60%;
-        color: @light-blue;
-        font-weight: @medium;
-        .background('links_orange.png',left top 5px, 20px 19px, no-repeat);
-        padding-left: 30px;
-
-        &:hover{
-            text-decoration: underline;
-        }
-    }
-}
-
-.background(@image,@position, @size, @repeat){ //Imagens do background
-    background-image: url("@{dirImage}@{image}");
-    background-position: @position;
-    background-size: @size;
-    background-repeat: @repeat;
-}
-
-.bgcolor(@bg-color,@color){
-    background-color: @bg-color;
-    color: @color;
-}
-
-.fn-icone(@bg-image,@w,@h){ // Estilo para icones nos tópicos
-    position: absolute;
-    margin-left: -@w * 1.4;
-    width: @w;
-    height: @h;
-    .background(@bg-image,0px 0px,cover,inherit);
-    content: "";
-}
-
-.form-formation{ //Estilo para os campos de formulários
+// Estilo para os campos de formulários
+// Para plugin Wordpress: Contact Form 7
+.form-formation{ 
     margin-top: 15px;
 
     p{
-        .nomargin-nopadding;
+       @include nomargin-nopadding;
         margin-bottom: 5px;
 
         &:not(:last-of-type){
-            color: @color-default;
+            color: $color-default;
             width: 100%;
             height: auto;
         }
 
         &.pergunta{
-          color: @white;          
+          color: $white;          
         }
 
         &.checkbox{
-          color: @white;
+          color: $white;
           span.wpcf7-form-control-wrap{
 
             position: relative;
@@ -144,7 +118,7 @@
                   content: "";
                   display: inline-block;
                   background-color: transparent;
-                  border: 2px solid @white;
+                  border: 2px solid $white;
                   border-radius: 3px;
                   width: 17px;
                   height: 16px;
@@ -154,9 +128,9 @@
 
                 &:checked{
                   & ~ span.wpcf7-list-item-label::before{
-                    .background("footer/checked.jpg", center center, auto, no-repeat);
-                    background-color: @light-blue;
-                    border-color: @light-blue;
+                    @include background("footer/checked.jpg", center center, auto, no-repeat);
+                    background-color: $light-blue;
+                    border-color: $light-blue;
                   }
                 }
 
@@ -167,7 +141,7 @@
 
         span.wpcf7-form-control-wrap{
 
-            @w: 30px;
+            $w: 30px;
             display: block;
             height: 35px;
 
@@ -175,44 +149,44 @@
                 height: 60px;
             }
 
-            .icone(@w,@n){ //Função para icone
+            @mixin icone($w,$n){ //Função para icone
                 position: absolute;
-                width: @w;
+                width: $w;
                 height: 30px;
                 margin-left: 10px;
                 bottom: 7.5px;
                 content: '';
-                .background("footer/icon-form.png",@w*@n 0px,inheret,no-repeat);
+                @include background("footer/icon-form.png",$w*$n 0px,inheret,no-repeat);
             }
 
             &.your-name::before{
-                .icone(@w,0);
+                @include icone($w,0);
             }
 
             &.your-email::before{
-                .icone(@w,-1);
+                @include icone($w,-1);
             }
 
             &.your-business::before{
-                .icone(@w,-2);
+                @include icone($w,-2);
             }
 
             &.your-telefone::before{
-                .icone(@w,-3);
+                @include icone($w,-3);
             }
 
             &.your-assunto::before{
-                .icone(@w,-4);
+                @include icone($w,-4);
             }
 
             &.your-message::before{
-                .icone(@w,-5);
+                @include icone($w,-5);
                 bottom: inheret;
                 top: 1px;
             }
 
             &.your-linkedin::before{
-                .icone(@w,-6);
+                @include icone($w,-6);
                 bottom: inheret;
                 top: 1px;
             }
@@ -224,7 +198,7 @@
                 width: 100%;
                 padding: 10px 10px 10px 50px;
                 border: 0px;
-                border-bottom: 1px solid fadeout(@light-blue,90%);
+                border-bottom: 1px solid fadeout($light-blue,90%);
                 border-radius: 3px;
 
                 &.wpcf7-textarea{
@@ -242,27 +216,27 @@
         }
 
         input[type='submit']{
-            .bgcolor(@light-blue,@white);
-            .pull-right;
+            @include bgcolor($light-blue,$white);
+            @include pull-right;
             margin-top: 10px;
             padding: 15px;
             line-height: 14px;
             border: 0px;
             border-radius: 5px;
             text-transform: uppercase;
-            font-weight: @heavy;
+            font-weight: $heavy;
         }
 
     }
 
     div.wpcf7-response-output{
-        .nomargin-nopadding;
+        @include nomargin-nopadding;
         position: absolute;
         display: inline-block;
         margin-top: -15px;
         border: 0px;
         width: 60%;
-        color: @white; 
+        color: $white; 
     }
 
 }
