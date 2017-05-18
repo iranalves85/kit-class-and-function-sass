@@ -1,0 +1,103 @@
+//flutuar
+@mixin flutuar{
+    position: fixed;
+    z-index: 99999;
+    width: 100% !important;
+    top: 0px;
+    animation: flutuar 0.8s 1;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.1);    
+}
+
+//Botão
+.botao{
+    @include bgcolor($laranja, $branco);
+    border: 0px;
+    border-bottom: 2px solid darken($laranja, 10%);
+}
+
+//Botao Qtd
+.btn-qtd, .qtd, 
+.qtd-aumentar, .qtd-diminuir{
+    border-bottom: 1px solid #ddd;
+    background: -webkit-linear-gradient(left top, #fff, #ddd), 
+                -webkit-linear-gradient(right top, #fff, #ddd);
+    background:
+        -moz-linear-gradient(left top, #fff, #ddd), 
+        -moz-linear-gradient(right top, #fff, #ddd);                        
+    background:
+        -o-linear-gradient(left top, #fff, #ddd), 
+        -o-linear-gradient(right top, #fff, #ddd); 
+    background: 
+        linear-gradient(left top, #fff, #ddd), 
+        linear-gradient(right top, #fff, #ddd); 
+
+    -moz-background-size: 1px 100%;                    
+    background-size: 1px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
+//Sem padding e margin
+@mixin nomargin-nopadding{
+    margin: 0px;
+    padding: 0px;
+}
+
+.nomargin-nopadding{
+   @extend nomargin-nopadding !optional;
+}
+
+//Lista inline
+.list-inline{
+  @extend nomargin-nopadding !optional;
+  li{
+    display: inline;
+    list-style: none;
+  }
+}
+
+//Imagem responsiva
+.img-responsive{
+  @extend .img-responsive !optional;
+} 
+
+//Titulo
+.titulo-secao{
+    
+    text-align: center;
+    text-transform: uppercase; 
+    font-size: $h2;
+    color: $texto-cinza;    
+    
+    span{
+       display: inline-block;
+       font-weight: 700;   
+       border-bottom: 1px solid $texto-cinza;
+       font-weight: 700;
+       padding-bottom: 5px;
+       strong{
+           color: $preto-claro;
+           font-weight: 700;
+       }
+    }
+    
+}
+
+//Placeholder
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: $texto-cinza;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: $texto-cinza;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: $texto-cinza;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: $texto-cinza;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: $texto-cinza;
+}

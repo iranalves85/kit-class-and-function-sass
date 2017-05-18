@@ -1,0 +1,268 @@
+/* Funções */
+
+/* @image: imagem de background
+*  @w: largura da imagem
+*  @h: altura da imagem
+*  @reducao: variavel para redução*/
+.navicon(@image, @w, @h,  @reducao){ //Nav-icon
+    
+    //reducao
+    @width:  @w / @reducao;
+    @height: @h / @reducao;
+    
+    //posicionamento
+    @pequeno: @width / 3;
+    @grande:  @height;
+
+    //atributos
+    position: relative;    
+    
+    &::before{
+        content: "";
+        width: @pequeno;
+        height: @height;
+        .center-block;
+        .background(@image, 0px 0px, cover , no-repeat);
+    }
+    
+    &:hover{
+        &::before{
+            opacity: 0.5;
+        }
+    }
+    
+    //1:integracao 2:conteúdo 3:mobile-marketing
+    &.bg-img-2{
+        &::before{
+            background-position: -@pequeno 0px;            
+        }        
+    }
+    
+    &.bg-img-3{
+        &::before{
+            background-position: -@pequeno*2 0px;            
+        }        
+    }
+    
+}
+
+.bloco(@bgcolor,@color,@margin,@padding){ // Estilo os blocos
+
+    .bgcolor(@bgcolor,@color);
+    padding-top: @padding;
+    padding-bottom: @padding;
+    margin-top: @margin;
+    margin-bottom: @margin;
+
+    h2{
+        font-size: @font-size-h2;
+        font-weight: @light;
+    }
+}
+
+.link_position(@float){ //Função do link
+    a.link-continue{
+        float: @float;
+        position: relative;
+        display: inline-block;
+        width: 60%;
+        color: @light-blue;
+        font-weight: @medium;
+        .background('links_orange.png',left top 5px, 20px 19px, no-repeat);
+        padding-left: 30px;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.background(@image,@position, @size, @repeat){ //Imagens do background
+    background-image: url("@{dirImage}@{image}");
+    background-position: @position;
+    background-size: @size;
+    background-repeat: @repeat;
+}
+
+.bgcolor(@bg-color,@color){
+    background-color: @bg-color;
+    color: @color;
+}
+
+.fn-icone(@bg-image,@w,@h){ // Estilo para icones nos tópicos
+    position: absolute;
+    margin-left: -@w * 1.4;
+    width: @w;
+    height: @h;
+    .background(@bg-image,0px 0px,cover,inherit);
+    content: "";
+}
+
+.form-formation{ //Estilo para os campos de formulários
+    margin-top: 15px;
+
+    p{
+        .nomargin-nopadding;
+        margin-bottom: 5px;
+
+        &:not(:last-of-type){
+            color: @color-default;
+            width: 100%;
+            height: auto;
+        }
+
+        &.pergunta{
+          color: @white;          
+        }
+
+        &.checkbox{
+          color: @white;
+          span.wpcf7-form-control-wrap{
+
+            position: relative;
+            display: inline;
+
+            span.wpcf7-list-item{
+
+              margin-left: 20%;
+
+              &.first{
+                margin-left: -3px;
+                float: left;
+              }
+
+              &.last{
+                margin-right: -1px;
+                float: right;
+              }
+
+              input{
+                visibility: hidden;
+                position: absolute;
+
+                & ~ span.wpcf7-list-item-label::before{
+                  content: "";
+                  display: inline-block;
+                  background-color: transparent;
+                  border: 2px solid @white;
+                  border-radius: 3px;
+                  width: 17px;
+                  height: 16px;
+                  margin: 0px 5px -3px 0px;
+                  cursor: pointer;
+                }
+
+                &:checked{
+                  & ~ span.wpcf7-list-item-label::before{
+                    .background("footer/checked.jpg", center center, auto, no-repeat);
+                    background-color: @light-blue;
+                    border-color: @light-blue;
+                  }
+                }
+
+              }
+            }
+          }
+        }
+
+        span.wpcf7-form-control-wrap{
+
+            @w: 30px;
+            display: block;
+            height: 35px;
+
+            &.your-mensagem{
+                height: 60px;
+            }
+
+            .icone(@w,@n){ //Função para icone
+                position: absolute;
+                width: @w;
+                height: 30px;
+                margin-left: 10px;
+                bottom: 7.5px;
+                content: '';
+                .background("footer/icon-form.png",@w*@n 0px,inheret,no-repeat);
+            }
+
+            &.your-name::before{
+                .icone(@w,0);
+            }
+
+            &.your-email::before{
+                .icone(@w,-1);
+            }
+
+            &.your-business::before{
+                .icone(@w,-2);
+            }
+
+            &.your-telefone::before{
+                .icone(@w,-3);
+            }
+
+            &.your-assunto::before{
+                .icone(@w,-4);
+            }
+
+            &.your-message::before{
+                .icone(@w,-5);
+                bottom: inheret;
+                top: 1px;
+            }
+
+            &.your-linkedin::before{
+                .icone(@w,-6);
+                bottom: inheret;
+                top: 1px;
+            }
+
+            input:not([type='submit']),
+            input[type='file'] ~ label span,
+            textarea{
+                height: 35px;
+                width: 100%;
+                padding: 10px 10px 10px 50px;
+                border: 0px;
+                border-bottom: 1px solid fadeout(@light-blue,90%);
+                border-radius: 3px;
+
+                &.wpcf7-textarea{
+                    height: 80px;
+                }
+            }
+
+            span.wpcf7-not-valid-tip{
+                position: absolute;
+                z-index: 100;
+                right: 15px;
+                margin-top: -30px; 
+            }
+
+        }
+
+        input[type='submit']{
+            .bgcolor(@light-blue,@white);
+            .pull-right;
+            margin-top: 10px;
+            padding: 15px;
+            line-height: 14px;
+            border: 0px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: @heavy;
+        }
+
+    }
+
+    div.wpcf7-response-output{
+        .nomargin-nopadding;
+        position: absolute;
+        display: inline-block;
+        margin-top: -15px;
+        border: 0px;
+        width: 60%;
+        color: @white; 
+    }
+
+}

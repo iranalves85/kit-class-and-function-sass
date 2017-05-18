@@ -1,0 +1,17 @@
+/* Função para carregamento das fontes */
+
+@mixin carregar-fonte($fonte){
+    
+    $dirFont: 'fonts/';
+    
+    @font-face {
+        font-family: "#{$fonte}";
+        src: url("#{$dirFont}#{$fonte}.eot?#iefix");
+        src: url("#{$dirFont}#{$fonte}.eot?#iefix") format("eot"),
+             url("#{$dirFont}#{$fonte}.woff") format("woff"),
+             url("#{$dirFont}#{$fonte}.ttf") format("truetype"),
+             url("#{$dirFont}#{$fonte}.svg#c92d9753_c501_44aa_9e48_e1675cd0d5b0") format("svg");
+    }
+}
+
+@include carregar-fonte('caecilia-bold');

@@ -1,0 +1,40 @@
+// Função para definir cor de fundo e cor de fonte
+@mixin bgcolor($bg-color, $color){
+    background-color: $bg-color;
+    color: $color;
+}
+
+// Função de background simples com posicionamento e tamanho
+@mixin background($image, $position, $size, $repeat){
+    background-image: url("#{$dirImage}#{$image}");
+    background-position: $position;
+    background-size: $size;
+    background-repeat: $repeat;
+}
+
+// Função de bg como sprite
+@mixin bg-sprite($image-path, $bg-position, $size, $repeat){
+    @include background($image-path,$bg-position, $size, $repeat);
+}
+
+// Multiple imagens de background através de arrays
+// qtd ilimitada de bgs, somente passar o caminhos e parametros de cada
+// O sinal de '+' incrementa a propriedade com valores passados
+@mixin multiple-backgrounds($path, $position, $size, $repeat){
+
+    $qtd : length($path); //qtd de chaves no array
+
+    @mixin loop{
+        @while ($index <= $qtd){
+            $image:                 e(extract($path, $index));
+            background-image:      url($image);
+            background-position:   extract($position, $index);
+            background-size:       extract($size, $index);
+            background-repeat:     extract($repeat, $index);
+            @include loop($index + 1);
+        }        
+    }
+    
+    @include loop(1);
+
+}
