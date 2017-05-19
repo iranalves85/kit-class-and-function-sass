@@ -8,13 +8,6 @@
     box-shadow: 0px 1px 1px rgba(0,0,0,0.1);    
 }
 
-//Botão
-.botao{
-    @include btn-quadrado($laranja, $branco);
-    border: 0px;
-    border-bottom: 2px solid darken($laranja, 10%);
-}
-
 .nomargin-nopadding{
    @include nomargin-nopadding;
 }

@@ -2,13 +2,17 @@
 
 // Função para definir bg e cor da fonte
 // dos blocos numerados
-@mixin fn-bg-topic($bg, $font-color){
-
-    @include bgcolor($bg, $font-color);
-
-    & > .topic.bg-white h3{
-        color: $bg;
+@mixin before-or-after-img($bg-image, $bg-position, $element, $size, $display ){
+    
+    &::#{$element}{
+        @include background($bg-image, $bg-position, nth($size, 1), no-repeat);
+        content : "";
+        display : $display;
+        width   :  nth($size, 2);
+        height  : nth($size, 3);
     }
+    
+    
 }
 
 // Função que define estilo para icones nos tópicos
