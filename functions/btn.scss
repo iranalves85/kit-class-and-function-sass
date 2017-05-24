@@ -106,30 +106,28 @@
   }
 }
 
-@mixin btn{ //botão
+@mixin btn($colors, $padding, $border){ //botão
+    
     display: inline;
-    margin-top: 25px;
-    padding: 5px 15px;
+    padding: $padding;
     text-decoration: none;
-
-    &:hover{
-        transition: ease-in 0.1s;   
+    
+    @include bgcolor(nth($colors, 1), nth($colors, 2));
+    
+    @if (nth($border, 1) > 0){
+        border-width: nth($border, 1) + px;
+        border-style: nth($border, 2);
+        border-color: nth($border, 3);
+    }
+    @else{
+        border: 0px;
     }
     
-    &.btn-section{
-        @include btn-section;
+    &:hover{
+        @include bgcolor(nth($colors, 3), nth($colors, 4));
+        transition: ease-in 0.1s;   
     }
             
-}
-
-@mixin btn-section{
-    text-transform: uppercase;
-    border: 0px;
-    margin-bottom: 15px;
-
-    &::after{
-        content: " \25B6";
-    } 
 } 
 
 @mixin btn-quadrado($bg-color, $color, $text-align){
