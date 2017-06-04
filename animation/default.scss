@@ -22,22 +22,22 @@
 }
 
 @keyframes fade{
-    0%{
+    100%{
         display: block;        
         opacity: 1;
     }
-    100%{
+    0%{
         display: none;        
         opacity: 0;
     }
 }
 
 @-webkit-keyframes fade{
-    0%{
+    100%{
         display: block;        
         opacity: 1;
     }
-    100%{
+    0%{
         display: none;        
         opacity: 0;
     }
@@ -45,24 +45,24 @@
 
 @keyframes open_menu{
   from{
-    left: -216px;
+    left: -100%;
     opacity: 0;
   }
 
   to{
-    left: 0px;
+    left: 0%;
     opacity: 1.0;
   }
 }
 
 @-webkit-keyframes open_menu{
   from{
-    left: -216px;
+    left: -100%;
     opacity: 0;
   }
 
   to{
-    left: 0px;
+    left: 0%;
     opacity: 1.0;
   }
 }

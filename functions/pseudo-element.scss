@@ -8,6 +8,10 @@
     ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
         color: $color;
     }
+    
+    ::input-placeholder{
+        color: $color;
+    }
     :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
        color: $color;
        opacity:  1;

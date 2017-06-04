@@ -1,4 +1,4 @@
-/* 
+/*
     Created on : 17/05/2017, 22:02:14
     Author     : Iran
 */
@@ -27,7 +27,7 @@
         @include bg-sprite($sprite-set, $position, $sprite-set, no-repeat );
     }
 
-    &:hover{            
+    &:hover{
         text-decoration: none !important;
     }
 }
@@ -45,7 +45,7 @@
   letter-spacing: 1px;
   font-weight: bold;
   text-transform: uppercase;
-  
+
   &::after{
       content: "\3009";
       position: absolute;
@@ -82,7 +82,7 @@
   letter-spacing: 1px;
   font-weight: bold;
   text-transform: uppercase;
-  
+
   &::after{
       content: "\3009";
       position: absolute;
@@ -107,13 +107,13 @@
 }
 
 @mixin btn($colors, $padding, $border){ //botão
-    
+
     display: inline;
     padding: $padding;
     text-decoration: none;
-    
+
     @include bgcolor(nth($colors, 1), nth($colors, 2));
-    
+
     @if (nth($border, 1) > 0){
         border-width: nth($border, 1) + px;
         border-style: nth($border, 2);
@@ -122,24 +122,25 @@
     @else{
         border: 0px;
     }
-    
+
     &:hover{
         @include bgcolor(nth($colors, 3), nth($colors, 4));
-        transition: ease-in 0.1s;   
+        transition: ease-in 0.1s;
     }
-            
-} 
+
+}
 
 @mixin btn-quadrado($bg-color, $color, $text-align){
-    
+
     @include bgcolor($bg-color, $color);
     border: 0px;
     border-bottom: 2px solid darken($bg-color, 10%);
     text-align: $text-align;
-    
+
     &:hover{
         background-color: lighten($bg-color, 15%);
+        color: $color;
+        text-decoration: none;
         transition: ease-in 0.2s;
     }
 }
-
