@@ -145,16 +145,6 @@
                 height: 60px;
             }
 
-            @mixin icone($w,$n){ //Função para icone
-                position: absolute;
-                width: $w;
-                height: 30px;
-                margin-left: 10px;
-                bottom: 7.5px;
-                content: '';
-                @include background($image,$w*$n 0px,inheret,no-repeat);
-            }
-
             &.your-name::before{
                 @include icone($w,0);
             }

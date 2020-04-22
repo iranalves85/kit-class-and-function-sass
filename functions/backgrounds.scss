@@ -1,3 +1,13 @@
+@mixin icone($w,$n){ //Função para icone
+    position: absolute;
+    width: $w;
+    height: 30px;
+    margin-left: 10px;
+    bottom: 7.5px;
+    content: '';
+    @include background($image,$w*$n 0px,inheret,no-repeat);
+}
+
 // Função para definir cor de fundo e cor de fonte
 @mixin bgcolor($bg-color, $color){
     background-color: $bg-color;
@@ -20,21 +30,17 @@
 // Multiple imagens de background através de arrays
 // qtd ilimitada de bgs, somente passar o caminhos e parametros de cada
 // O sinal de '+' incrementa a propriedade com valores passados
-@mixin multiple-backgrounds($path, $position, $size, $repeat){
+@mixin multiple-backgrounds($position, $size, $repeat, $path:1){
 
     $qtd : length($path); //qtd de chaves no array
 
-    @mixin loop{
-        @while ($index <= $qtd){
-            $image:                 e(extract($path, $index));
-            background-image:      url($image);
-            background-position:   extract($position, $index);
-            background-size:       extract($size, $index);
-            background-repeat:     extract($repeat, $index);
-            @include loop($index + 1);
-        }        
-    }
-    
-    @include loop(1);
+    @while ($index <= $qtd){
+        $image:                e(extract($path, $index));
+        background-image:      url($image);
+        background-position:   extract($position, $index);
+        background-size:       extract($size, $index);
+        background-repeat:     extract($repeat, $index);
+        @include loop($index + 1);
+    } 
 
 }
